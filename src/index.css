@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #1e1f23;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
