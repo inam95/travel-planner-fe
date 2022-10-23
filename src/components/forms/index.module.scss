@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  & .inputContainer {
+    background-color: rgb(14, 14, 14);
+    padding: 10px 18px;
+    & label {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    & input {
+      margin-top: 0;
+      font-size: 16px;
+    }
+  }
+}
+
+.createPlanButton {
+  margin-bottom: 20px;
+  font-weight: 500;
+}

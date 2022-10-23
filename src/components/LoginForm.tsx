@@ -2,9 +2,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { registerUser } from '../utils/api';
+import { loginUser } from '../utils/api';
 import {
   Button,
   Input,
@@ -12,17 +11,17 @@ import {
   InputContainerHeader,
   InputLabel
 } from '../utils/styles';
-import { RegisterUserParams } from '../utils/types';
+import { LoginUserParams } from '../utils/types';
 import styles from './index.module.scss';
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
-  const mutation = useMutation(registerUser, {
-    onSuccess: () => navigate('/login'),
+  const mutation = useMutation(loginUser, {
+    onSuccess: () => navigate('/app/plans'),
     onError: error => {
       console.log(error);
 
-      toast.error('Could not create account', {
+      toast.error('Could not login', {
         theme: 'dark'
       });
     }
@@ -31,9 +30,9 @@ export const RegisterForm = () => {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm<RegisterUserParams>();
+  } = useForm<LoginUserParams>();
 
-  const onSubmit = async (data: RegisterUserParams) => {
+  const onSubmit = async (data: LoginUserParams) => {
     try {
       const { data: user } = await mutation.mutateAsync(data);
       console.log(user);
@@ -50,15 +49,7 @@ export const RegisterForm = () => {
         <Input
           id="username"
           {...register('username', {
-            required: 'Username is required',
-            minLength: {
-              value: 5,
-              message: 'Min. 5 characters'
-            },
-            maxLength: {
-              value: 16,
-              message: 'Max 16 characters'
-            }
+            required: 'Username is required'
           })}
         />
       </InputContainer>
@@ -70,19 +61,11 @@ export const RegisterForm = () => {
           id="password"
           type="password"
           {...register('password', {
-            required: 'Password is required',
-            minLength: {
-              value: 5,
-              message: 'Min. 5 characters'
-            },
-            maxLength: {
-              value: 32,
-              message: 'Max 32 characters'
-            }
+            required: 'Password is required'
           })}
         />
       </InputContainer>
-      <Button>Create Account</Button>
+      <Button>Login</Button>
     </form>
   );
 };
