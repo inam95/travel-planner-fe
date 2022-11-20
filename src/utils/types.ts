@@ -12,3 +12,10 @@ export type User = {
   id: number;
   username: string;
 };
+
+export type Plan = {
+  id: number;
+  date: string;
+  title: string;
+  description: string;
+};

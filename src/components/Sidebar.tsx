@@ -5,7 +5,8 @@ import {
   Page
 } from '../utils/styles';
 import { IoCalendarOutline } from 'react-icons/io5';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { BiCalendarPlus } from 'react-icons/bi';
+import { useQueryClient } from '@tanstack/react-query';
 import { User } from '../utils/types';
 import { AxiosResponse } from 'axios';
 
@@ -21,6 +22,10 @@ const Sidebar = () => {
       <NavigationItemContainer>
         <IoCalendarOutline />
         <span>Plans</span>
+      </NavigationItemContainer>
+      <NavigationItemContainer>
+        <BiCalendarPlus />
+        <span>Shared with you</span>
       </NavigationItemContainer>
     </NavigationSidebar>
   );
